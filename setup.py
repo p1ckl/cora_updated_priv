@@ -15,6 +15,7 @@ setup(
                       'torch-ac',
                       'gymnasium[atari]',
                       'gymnasium[accept-rom-license]',
+                      'ale_py'
                       'dotmap',
                       'psutil',
                       'opencv-python',
