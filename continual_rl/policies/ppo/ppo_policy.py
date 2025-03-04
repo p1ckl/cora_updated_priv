@@ -32,7 +32,13 @@ class PPOPolicy(PolicyBase):
         observation_size = observation_space.shape
         compressed_observation_size = [observation_size[0] * observation_size[1], observation_size[2], observation_size[3]]
         self._config = config
-        self._device = torch.device("cuda:0" if self._config.cuda else "cpu")
+
+        if self._config.cuda:
+            self._device = torch.device("cuda:0")
+        elif self._config.mps:
+            self._device = torch.device("mps")
+        else:
+            self._device = torch.device("cpu")
 
         self._actor_critic = Policy(obs_shape=compressed_observation_size,
                                     action_space=max_action_space)

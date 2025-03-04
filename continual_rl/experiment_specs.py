@@ -191,7 +191,7 @@ def get_available_experiments():
         "road_runner": create_atari_single_game_loader("RoadRunnerNoFrameskip-v4"),
         "robotank": create_atari_single_game_loader("RobotankNoFrameskip-v4"),
         "seaquest": create_atari_single_game_loader("SeaquestNoFrameskip-v4"),
-        "space_invaders": create_atari_single_game_loader("SpaceInvadersNoFrameskip-v4"),
+        "space_invaders": create_atari_single_game_loader("ALE/SpaceInvadersNoFrameskip-v4"),
         "star_gunner": create_atari_single_game_loader("StarGunnerNoFrameskip-v4"),
         "tennis": create_atari_single_game_loader("TennisNoFrameskip-v4"),
         "time_pilot": create_atari_single_game_loader("TimePilotNoFrameskip-v4"),

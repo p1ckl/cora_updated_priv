@@ -26,6 +26,7 @@
 
 from multiprocessing import Process, Pipe
 import gymnasium as gym
+import torch
 import cloudpickle
 from continual_rl.utils.utils import Utils
 
@@ -95,6 +96,8 @@ class ParallelEnv(gym.Env):
 
     def step(self, actions):
         for local, action in zip(self.locals, actions[1:]):
+            if isinstance(action, torch.Tensor) and action.device.type != "cpu":
+                action = action.cpu()
             local.send(("step", action))
         obs, reward, terminated, truncated, info = self._local_env.step(actions[0])
         if terminated or truncated:

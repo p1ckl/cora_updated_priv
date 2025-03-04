@@ -1,4 +1,5 @@
 import gymnasium as gym
+import ale_py
 
 from continual_rl.utils.env_wrappers import (
     NoopResetEnv,
@@ -15,6 +16,9 @@ from .image_task import ImageTask
 
 
 def make_atari(env_id, max_episode_steps=None, full_action_space=False):
+    print()
+    print(f"env id-> {env_id}")
+    print()
     env = gym.make(env_id, full_action_space=full_action_space)
     assert 'NoFrameskip' in env.spec.id
     env = NoopResetEnv(env, noop_max=30)
